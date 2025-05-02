@@ -18,6 +18,15 @@ public class CollectionOperations
     {
         var products = new ArrayList<>(List.of(window, floorPanel, door));
         System.out.println(products);
+
+//        Collections.rotate(products, 2);
+//        Collections.shuffle(products, ThreadLocalRandom.current());
+        
+//        System.out.println(products);
+        var alphabet = makeAlphabet();
+
+        int index = Collections.binarySearch(alphabet, 'M');
+        System.out.println(index);
     }
 
     private static List<Character> makeAlphabet()

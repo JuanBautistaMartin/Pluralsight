@@ -5,6 +5,8 @@ import com.monotonic.collections._5_streams.Product;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static java.util.Comparator.comparingInt;
 
@@ -19,6 +21,18 @@ public class StreamProducts
         var products = List.of(door, floorPanel, window, floorPanel, window);
 
         System.out.println(namesOfLightProductsWeightSortedLoop(products));
+
+        // With Streams
+        System.out.println(namesOfLightProductsWeightSortedStreams(products));
+    }
+
+    private static List<String> namesOfLightProductsWeightSortedStreams(List<Product> products) {
+        return products.stream()
+                .filter(product -> product.getWeight() < 30)
+                .sorted(comparingInt(Product::getWeight))
+                .map(Product::getName)
+                .distinct()
+                .toList();
     }
 
     private static List<String> namesOfLightProductsWeightSortedLoop(
